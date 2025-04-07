@@ -1,0 +1,25 @@
+{
+  "name": "retro-browser-scan",
+  "version": "1.0.0",
+  "description": "一个具有复古未来主义风格的浏览器和网络信息扫描工具",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "keywords": [
+    "browser",
+    "scan",
+    "IP",
+    "WebRTC",
+    "retro",
+    "futuristic"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+} 

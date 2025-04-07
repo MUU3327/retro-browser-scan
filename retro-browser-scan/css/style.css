@@ -1,0 +1,286 @@
+/* 复古浏览器扫描 - Retro Browser Scan CSS */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Share+Tech+Mono&display=swap');
+
+:root {
+  --color-bg: #0a0b18;
+  --color-primary: #00e5ff;
+  --color-secondary: #ff2a6d;
+  --color-tertiary: #05d9e8;
+  --color-accent: #7700ff;
+  --color-dark: #0f1928;
+  --color-light: #d1f7ff;
+  --grid-color: rgba(0, 229, 255, 0.1);
+}
+
+/* Base Styles */
+body {
+  background-color: var(--color-bg);
+  font-family: 'Share Tech Mono', monospace;
+  color: var(--color-light);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Orbitron', sans-serif;
+  letter-spacing: 0.05em;
+}
+
+.retro-text {
+  text-shadow: 0 0 10px var(--color-primary), 0 0 20px var(--color-primary), 0 0 30px var(--color-primary);
+}
+
+/* Hero Section */
+.hero-section {
+  min-height: 80vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  background: linear-gradient(135deg, rgba(10, 11, 24, 1) 0%, rgba(41, 19, 75, 1) 100%);
+}
+
+.retro-grid {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
+  background-size: 50px 50px;
+  transform: perspective(500px) rotateX(45deg);
+  transform-origin: center top;
+  animation: grid-animation 20s linear infinite;
+}
+
+@keyframes grid-animation {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 0 50px;
+  }
+}
+
+/* Terminal Component */
+.retro-terminal {
+  width: 100%;
+  max-width: 550px;
+  margin: 0 auto;
+  box-shadow: 0 0 30px rgba(0, 229, 255, 0.3);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.terminal-body {
+  min-height: 250px;
+  position: relative;
+  padding: 1.5rem;
+  background-color: rgba(10, 11, 24, 0.9);
+  border: 1px solid var(--color-primary);
+  font-family: 'Share Tech Mono', monospace;
+}
+
+.typing-text {
+  display: inline;
+}
+
+.cursor-blink {
+  display: inline-block;
+  margin-left: 2px;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Button Styles */
+.retro-btn {
+  border: none;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.retro-btn:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, var(--color-secondary), var(--color-accent));
+  z-index: -1;
+  transition: all 0.3s ease;
+}
+
+.retro-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(255, 42, 109, 0.3);
+}
+
+.retro-btn-outline {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: all 0.3s ease;
+}
+
+.retro-btn-outline:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(0, 229, 255, 0.3);
+}
+
+/* Panel Styles */
+.retro-panel {
+  background-color: rgba(15, 25, 40, 0.7);
+  border: 1px solid var(--color-primary);
+  border-radius: 0.5rem;
+  box-shadow: 0 0 20px rgba(0, 229, 255, 0.2);
+  overflow: hidden;
+  margin-bottom: 2rem;
+  backdrop-filter: blur(5px);
+  transition: all 0.3s ease;
+}
+
+.retro-panel:hover {
+  box-shadow: 0 0 30px rgba(0, 229, 255, 0.3);
+}
+
+.panel-header {
+  background: linear-gradient(90deg, rgba(15, 25, 40, 0.9) 0%, rgba(41, 19, 75, 0.8) 100%);
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid rgba(0, 229, 255, 0.3);
+}
+
+.panel-body {
+  padding: 1.5rem;
+}
+
+/* Status Indicators */
+.status-indicator {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background-color: #f0f0f0;
+  position: relative;
+  display: inline-block;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.status-indicator.success {
+  background-color: #05d9e8;
+  box-shadow: 0 0 10px rgba(5, 217, 232, 0.7);
+}
+
+.status-indicator.warning {
+  background-color: #ffd700;
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+}
+
+.status-indicator.danger {
+  background-color: #ff2a6d;
+  box-shadow: 0 0 10px rgba(255, 42, 109, 0.7);
+}
+
+/* Map styling */
+#ip-map {
+  border: 2px solid var(--color-tertiary);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  position: relative;
+}
+
+#ip-map:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(0, 229, 255, 0.1) 0%, transparent 100%);
+  pointer-events: none;
+  z-index: 1000;
+}
+
+/* Scan animation */
+@keyframes scan {
+  0% {
+    background-position: 0% 0%;
+  }
+  100% {
+    background-position: 0% 100%;
+  }
+}
+
+.scanning:after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, transparent, var(--color-primary), transparent);
+  animation: scan 2s linear infinite;
+  z-index: 100;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .hero-section {
+    min-height: 60vh;
+  }
+  
+  .retro-terminal {
+    max-width: 100%;
+  }
+  
+  .terminal-body {
+    min-height: 200px;
+  }
+}
+
+/* Custom Leaflet styles */
+.leaflet-container {
+  background-color: #0f1928 !important;
+}
+
+.leaflet-tile {
+  filter: invert(1) hue-rotate(180deg) brightness(0.8) saturate(1.5) !important;
+}
+
+.leaflet-control-attribution {
+  background: rgba(15, 25, 40, 0.7) !important;
+  color: var(--color-primary) !important;
+  font-family: 'Share Tech Mono', monospace !important;
+  font-size: 10px !important;
+}
+
+.leaflet-marker-icon {
+  filter: hue-rotate(180deg) brightness(1.5) !important;
+}
+
+/* Animation for latency bars */
+@keyframes fillBar {
+  from { width: 0%; }
+  to { width: var(--fill-width); }
+}
+
+.latency-bar-animated {
+  animation: fillBar 1.5s ease-out forwards;
+} 

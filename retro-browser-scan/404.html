@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - 页面未找到 | Retro Browser Scan</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .glitch {
+            animation: glitch-animation 0.8s infinite linear alternate-reverse;
+            position: relative;
+        }
+        
+        @keyframes glitch-animation {
+            0% {
+                opacity: 1;
+                transform: translate(0);
+                text-shadow: 0 0 10px var(--color-primary), 0 0 20px var(--color-primary);
+            }
+            50% {
+                opacity: 0.9;
+                transform: translate(-2px, 2px);
+                text-shadow: 0 0 10px var(--color-secondary), 0 0 20px var(--color-secondary);
+            }
+            100% {
+                opacity: 1;
+                transform: translate(2px, -2px);
+                text-shadow: 0 0 10px var(--color-primary), 0 0 20px var(--color-primary);
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white">
+    <div class="min-h-screen flex flex-col items-center justify-center px-4">
+        <div class="retro-panel max-w-xl w-full">
+            <div class="panel-header text-center">
+                <h1 class="text-6xl font-bold glitch">404</h1>
+                <h2 class="text-2xl font-bold text-cyan-400 mt-2">系统错误：页面未找到</h2>
+            </div>
+            <div class="panel-body text-center">
+                <p class="mb-6 text-xl">您请求的页面已被吞噬在赛博空间中。</p>
+                <div class="retro-terminal mb-8">
+                    <div class="terminal-header flex items-center p-2 bg-gray-800 rounded-t-lg">
+                        <div class="h-3 w-3 rounded-full bg-red-500 mx-1"></div>
+                        <div class="h-3 w-3 rounded-full bg-yellow-500 mx-1"></div>
+                        <div class="h-3 w-3 rounded-full bg-green-500 mx-1"></div>
+                        <div class="ml-4 text-xs text-gray-400">error_log.txt</div>
+                    </div>
+                    <div class="terminal-body bg-black bg-opacity-70 p-4 rounded-b-lg font-mono text-sm text-red-400">
+                        <div class="text-left">
+                            > ERROR: 404 NOT FOUND<br>
+                            > LOCATION: /<?php echo $_SERVER['REQUEST_URI']; ?><br>
+                            > CODE: 0xE40R4NF<br>
+                            > STATUS: CRITICAL<br><br>
+                            > 建议：返回安全区域
+                        </div>
+                    </div>
+                </div>
+                <a href="/" class="retro-btn inline-block bg-gradient-to-r from-purple-600 to-pink-500 px-6 py-3 rounded-lg text-white font-semibold hover:from-purple-700 hover:to-pink-600 transition">
+                    <i class="fas fa-home mr-2"></i> 返回主页
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html> 
