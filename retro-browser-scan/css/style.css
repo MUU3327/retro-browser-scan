@@ -283,4 +283,150 @@ h1, h2, h3, h4, h5, h6 {
 
 .latency-bar-animated {
   animation: fillBar 1.5s ease-out forwards;
+}
+
+/* Result Badge Styles */
+.result-badge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-align: center;
+  min-width: 120px;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--color-light);
+  position: relative;
+  overflow: hidden;
+}
+
+.result-badge::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+  transform: translateX(-100%);
+}
+
+.result-badge.loading::before {
+  animation: loading 1.5s infinite;
+}
+
+.result-badge.safe {
+  background-color: rgba(5, 217, 232, 0.2);
+  color: #05d9e8;
+  border: 1px solid rgba(5, 217, 232, 0.5);
+}
+
+.result-badge.warning {
+  background-color: rgba(255, 215, 0, 0.2);
+  color: #ffd700;
+  border: 1px solid rgba(255, 215, 0, 0.5);
+}
+
+.result-badge.danger {
+  background-color: rgba(255, 42, 109, 0.2);
+  color: #ff2a6d;
+  border: 1px solid rgba(255, 42, 109, 0.5);
+}
+
+.result-badge.neutral {
+  background-color: rgba(200, 200, 255, 0.2);
+  color: #c8c8ff;
+  border: 1px solid rgba(200, 200, 255, 0.5);
+}
+
+@keyframes loading {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+/* Info Button Styles */
+.info-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: rgba(0, 229, 255, 0.1);
+  transition: all 0.2s ease;
+}
+
+.info-btn:hover {
+  background-color: rgba(0, 229, 255, 0.2);
+  transform: scale(1.1);
+}
+
+/* Modal Styles */
+#info-modal {
+  backdrop-filter: blur(5px);
+}
+
+#info-modal .retro-panel {
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+#modal-content {
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+#modal-content h4 {
+  font-size: 1.25rem;
+  color: var(--color-secondary);
+  margin-bottom: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+#modal-content p {
+  margin-bottom: 1rem;
+}
+
+#modal-content ul {
+  margin-bottom: 1rem;
+  padding-left: 1.5rem;
+}
+
+#modal-content li {
+  margin-bottom: 0.5rem;
+}
+
+#modal-content code {
+  font-family: 'Share Tech Mono', monospace;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.25rem;
+  font-size: 0.9em;
+}
+
+#modal-content .tech-note {
+  background-color: rgba(0, 229, 255, 0.1);
+  border-left: 3px solid var(--color-primary);
+  padding: 0.75rem 1rem;
+  margin: 1rem 0;
+  font-size: 0.9rem;
+}
+
+#close-modal {
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.1);
+  transition: all 0.2s ease;
+}
+
+#close-modal:hover {
+  background-color: rgba(255, 255, 255, 0.2);
 } 

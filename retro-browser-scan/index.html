@@ -90,6 +90,14 @@
                                 <span class="text-gray-400">数据中心 IP:</span>
                                 <span id="datacenter-ip" class="font-semibold">检测中...</span>
                             </li>
+                            <li class="flex justify-between">
+                                <span class="text-gray-400">地理位置:</span>
+                                <span id="ip-geo" class="font-semibold">检测中...</span>
+                            </li>
+                            <li class="flex justify-between">
+                                <span class="text-gray-400">邮政编码:</span>
+                                <span id="ip-postal" class="font-semibold">检测中...</span>
+                            </li>
                         </ul>
                     </div>
                 </div>
@@ -189,6 +197,246 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Advanced Proxy/VPN Detection Panel -->
+            <div class="mt-8 mb-16">
+                <div class="section-header mb-8 text-center">
+                    <h2 class="text-4xl font-bold text-cyan-400 retro-text">高级代理/VPN检测<span class="text-pink-500">.</span></h2>
+                    <p class="text-xl text-gray-400">深度分析您的网络连接，检测可能的代理或VPN使用痕迹</p>
+                </div>
+                
+                <div class="retro-panel">
+                    <div class="panel-header">
+                        <h3 class="text-2xl font-bold"><i class="fas fa-microscope mr-2"></i> 检测结果</h3>
+                        <p class="text-sm text-gray-400 mt-1">综合分析多种指标，检测网络连接中的异常</p>
+                    </div>
+                    <div class="panel-body">
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full">
+                                <thead>
+                                    <tr class="border-b border-gray-700">
+                                        <th class="py-3 px-4 text-left text-cyan-400">检测名称</th>
+                                        <th class="py-3 px-4 text-center text-cyan-400">检测结果</th>
+                                        <th class="py-3 px-4 text-right text-cyan-400">详情</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- HTTP Headers Test -->
+                                    <tr class="border-b border-gray-800">
+                                        <td class="py-3 px-4">
+                                            <div class="font-semibold">HTTP Headers 检测</div>
+                                            <div class="text-xs text-gray-400">检测HTTP请求头中常见的代理标识</div>
+                                        </td>
+                                        <td class="py-3 px-4 text-center">
+                                            <div id="http-headers-result" class="result-badge">检测中...</div>
+                                        </td>
+                                        <td class="py-3 px-4 text-right">
+                                            <button class="info-btn text-cyan-400 hover:text-cyan-300" data-info="http-headers-info">
+                                                <i class="fas fa-info-circle"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    
+                                    <!-- IP Hosting Provider Test -->
+                                    <tr class="border-b border-gray-800">
+                                        <td class="py-3 px-4">
+                                            <div class="font-semibold">IP 属于托管服务商</div>
+                                            <div class="text-xs text-gray-400">检测IP是否属于数据中心或托管服务提供商</div>
+                                        </td>
+                                        <td class="py-3 px-4 text-center">
+                                            <div id="hosting-provider-result" class="result-badge">检测中...</div>
+                                        </td>
+                                        <td class="py-3 px-4 text-right">
+                                            <button class="info-btn text-cyan-400 hover:text-cyan-300" data-info="hosting-provider-info">
+                                                <i class="fas fa-info-circle"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    
+                                    <!-- IP on Proxy List -->
+                                    <tr class="border-b border-gray-800">
+                                        <td class="py-3 px-4">
+                                            <div class="font-semibold">IP 在代理列表中</div>
+                                            <div class="text-xs text-gray-400">检测IP是否在已知代理服务器列表中</div>
+                                        </td>
+                                        <td class="py-3 px-4 text-center">
+                                            <div id="proxy-list-result" class="result-badge">检测中...</div>
+                                        </td>
+                                        <td class="py-3 px-4 text-right">
+                                            <button class="info-btn text-cyan-400 hover:text-cyan-300" data-info="proxy-list-info">
+                                                <i class="fas fa-info-circle"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    
+                                    <!-- IP on VPN List -->
+                                    <tr class="border-b border-gray-800">
+                                        <td class="py-3 px-4">
+                                            <div class="font-semibold">IP 在VPN列表中</div>
+                                            <div class="text-xs text-gray-400">检测IP是否在已知VPN提供商列表中</div>
+                                        </td>
+                                        <td class="py-3 px-4 text-center">
+                                            <div id="vpn-list-result" class="result-badge">检测中...</div>
+                                        </td>
+                                        <td class="py-3 px-4 text-right">
+                                            <button class="info-btn text-cyan-400 hover:text-cyan-300" data-info="vpn-list-info">
+                                                <i class="fas fa-info-circle"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    
+                                    <!-- VPN Exit Node Enumeration -->
+                                    <tr class="border-b border-gray-800">
+                                        <td class="py-3 px-4">
+                                            <div class="font-semibold">VPN出口节点检测</div>
+                                            <div class="text-xs text-gray-400">检测IP是否为已知VPN出口节点</div>
+                                        </td>
+                                        <td class="py-3 px-4 text-center">
+                                            <div id="vpn-exit-node-result" class="result-badge">检测中...</div>
+                                        </td>
+                                        <td class="py-3 px-4 text-right">
+                                            <button class="info-btn text-cyan-400 hover:text-cyan-300" data-info="vpn-exit-node-info">
+                                                <i class="fas fa-info-circle"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    
+                                    <!-- TCP/IP Fingerprint -->
+                                    <tr class="border-b border-gray-800">
+                                        <td class="py-3 px-4">
+                                            <div class="font-semibold">TCP/IP 指纹检测</div>
+                                            <div class="text-xs text-gray-400">检测User-Agent与TCP/IP报头之间的OS不匹配</div>
+                                        </td>
+                                        <td class="py-3 px-4 text-center">
+                                            <div id="tcpip-fingerprint-result" class="result-badge">检测中...</div>
+                                        </td>
+                                        <td class="py-3 px-4 text-right">
+                                            <button class="info-btn text-cyan-400 hover:text-cyan-300" data-info="tcpip-fingerprint-info">
+                                                <i class="fas fa-info-circle"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    
+                                    <!-- Portscan Test -->
+                                    <tr class="border-b border-gray-800">
+                                        <td class="py-3 px-4">
+                                            <div class="font-semibold">端口扫描检测</div>
+                                            <div class="text-xs text-gray-400">扫描可能表明代理服务的开放端口</div>
+                                        </td>
+                                        <td class="py-3 px-4 text-center">
+                                            <div id="portscan-result" class="result-badge">检测中...</div>
+                                        </td>
+                                        <td class="py-3 px-4 text-right">
+                                            <button class="info-btn text-cyan-400 hover:text-cyan-300" data-info="portscan-info">
+                                                <i class="fas fa-info-circle"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    
+                                    <!-- Advanced Timezone Test -->
+                                    <tr class="border-b border-gray-800">
+                                        <td class="py-3 px-4">
+                                            <div class="font-semibold">高级时区检测</div>
+                                            <div class="text-xs text-gray-400">检测客户端与IP地理位置时区是否显著不同</div>
+                                        </td>
+                                        <td class="py-3 px-4 text-center">
+                                            <div id="adv-timezone-result" class="result-badge">检测中...</div>
+                                        </td>
+                                        <td class="py-3 px-4 text-right">
+                                            <button class="info-btn text-cyan-400 hover:text-cyan-300" data-info="adv-timezone-info">
+                                                <i class="fas fa-info-circle"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    
+                                    <!-- Network Behavior Test -->
+                                    <tr class="border-b border-gray-800">
+                                        <td class="py-3 px-4">
+                                            <div class="font-semibold">网络行为检测</div>
+                                            <div class="text-xs text-gray-400">检测网络异常以识别代理或VPN使用</div>
+                                        </td>
+                                        <td class="py-3 px-4 text-center">
+                                            <div id="network-behavior-result" class="result-badge">检测中...</div>
+                                        </td>
+                                        <td class="py-3 px-4 text-right">
+                                            <button class="info-btn text-cyan-400 hover:text-cyan-300" data-info="network-behavior-info">
+                                                <i class="fas fa-info-circle"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    
+                                    <!-- Network Flow Pattern Test -->
+                                    <tr class="border-b border-gray-800">
+                                        <td class="py-3 px-4">
+                                            <div class="font-semibold">网络流模式检测</div>
+                                            <div class="text-xs text-gray-400">分析TCP/IP连接流以识别代理或VPN特征</div>
+                                        </td>
+                                        <td class="py-3 px-4 text-center">
+                                            <div id="flow-pattern-result" class="result-badge">检测中...</div>
+                                        </td>
+                                        <td class="py-3 px-4 text-right">
+                                            <button class="info-btn text-cyan-400 hover:text-cyan-300" data-info="flow-pattern-info">
+                                                <i class="fas fa-info-circle"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    
+                                    <!-- High Latency Test -->
+                                    <tr class="border-b border-gray-800">
+                                        <td class="py-3 px-4">
+                                            <div class="font-semibold">高延迟检测</div>
+                                            <div class="text-xs text-gray-400">检测异常高的网络延迟（VPN使用的指标）</div>
+                                        </td>
+                                        <td class="py-3 px-4 text-center">
+                                            <div id="high-latency-result" class="result-badge">检测中...</div>
+                                        </td>
+                                        <td class="py-3 px-4 text-right">
+                                            <button class="info-btn text-cyan-400 hover:text-cyan-300" data-info="high-latency-info">
+                                                <i class="fas fa-info-circle"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                    
+                                    <!-- Latency vs Ping Test -->
+                                    <tr class="border-b border-gray-800">
+                                        <td class="py-3 px-4">
+                                            <div class="font-semibold">延迟与Ping比较</div>
+                                            <div class="text-xs text-gray-400">比较TCP/IP连接延迟与Ping RTT</div>
+                                        </td>
+                                        <td class="py-3 px-4 text-center">
+                                            <div id="latency-ping-result" class="result-badge">检测中...</div>
+                                        </td>
+                                        <td class="py-3 px-4 text-right">
+                                            <button class="info-btn text-cyan-400 hover:text-cyan-300" data-info="latency-ping-info">
+                                                <i class="fas fa-info-circle"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Test Info Modal -->
+            <div id="info-modal" class="fixed inset-0 z-50 hidden flex items-center justify-center">
+                <div class="absolute inset-0 bg-black bg-opacity-70"></div>
+                <div class="retro-panel max-w-2xl w-full mx-4 z-10">
+                    <div class="panel-header flex justify-between items-center">
+                        <h3 id="modal-title" class="text-2xl font-bold"><i class="fas fa-info-circle mr-2"></i> 测试详情</h3>
+                        <button id="close-modal" class="text-gray-400 hover:text-white">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                    <div class="panel-body">
+                        <div id="modal-content">
+                            <!-- Content will be filled by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </section>
 
         <!-- About Section -->
@@ -215,6 +463,8 @@
                                 <li><i class="fas fa-check text-cyan-400 mr-2"></i> HTTP代理头检测</li>
                                 <li><i class="fas fa-check text-cyan-400 mr-2"></i> 数据中心IP识别</li>
                                 <li><i class="fas fa-check text-cyan-400 mr-2"></i> 主要网站延迟测试</li>
+                                <li><i class="fas fa-check text-cyan-400 mr-2"></i> 多种高级代理/VPN检测技术</li>
+                                <li><i class="fas fa-check text-cyan-400 mr-2"></i> 网络行为与流量分析</li>
                             </ul>
                         </div>
                     </div>
